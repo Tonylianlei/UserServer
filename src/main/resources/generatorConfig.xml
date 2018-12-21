@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="default" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"></property>
+            <property name="suppressAllComments" value="true"></property>
+        </commentGenerator>
+
+        <jdbcConnection
+                driverClass="${spring.datasource.driverClassName}"
+                connectionURL="${spring.datasource.url}"
+                userId="${spring.datasource.username}"
+                password="${spring.datasource.password}">
+        </jdbcConnection>
+
+        <javaTypeResolver type="com.example.demo.build.javaType.TypeUtil">
+            <property name="forceBigDecimals" value="false"></property>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.example.demo.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"></property>
+            <property name="constructorBased" value="true"></property>
+            <property name="trimStrings" value="true"></property>
+            <property name="immutable" value="false"></property>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false"></property>
+        </sqlMapGenerator>
+
+        <!-- type取值 ANNOTATEDMAPPER：表示通过注解方式，无XML生成；XMLMAPPER：表示通过XML方式-->
+        <javaClientGenerator targetPackage="com.example.demo.dao" targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"></property>
+        </javaClientGenerator>
+
+        <table tableName="wifi_marketing_manage" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="constructorBased" value="false"/>
+            <!--<generatedKey column="shop_id" sqlStatement="MySql" identity="true"></generatedKey>-->
+        </table>
+    </context>
+</generatorConfiguration>
